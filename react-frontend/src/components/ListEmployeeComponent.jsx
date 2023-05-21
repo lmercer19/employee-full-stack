@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import EmployeeService from '../services/EmployeeService';
 
 class ListEmployeeComponent extends Component {
@@ -8,6 +9,7 @@ class ListEmployeeComponent extends Component {
         this.state = {
             employees: []
         }
+        this.addEmployee = this.addEmployee.bind(this);
     }
 
     componentDidMount() {
@@ -16,10 +18,17 @@ class ListEmployeeComponent extends Component {
         });
     }
 
+    addEmployee() {
+        this.props.history.push('/add-employee'); //works with router in App.js
+    }
+
     render() {
         return (
             <div>
                 <h2 className='text-center'>Employee List</h2>
+                <div className='row'>
+                    <Link to='/add-employee' className='btn btn-primary'>Add Employee</Link>
+                </div>
                 <div className='row'>
                     <table className='table table-striped table-bordered'>
                         <thead>
